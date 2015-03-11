@@ -6,27 +6,26 @@ Technology Stack
 ----------------
 
 ### Base
-HTML 
-CSS  
-BootStrap - http://getbootstrap.com/
-jQuery
-Google Maps V3
+* HTML 
+* CSS  
+* BootStrap - http://getbootstrap.com/
+* jQuery
+* Google Maps V3
 
 ### Helpers
-tkmap 4.0.0
-infobox
-tabletop
+* tkmap 4.0.0
+* infobox
+* tabletop
 
 ### Project Specific
-projects
-event
-
+* projects
+* event
 
 ### Site Specific
-local.js
+* local.js
 
 ### Other
-JSON
+* JSON
 
 
 
@@ -55,7 +54,7 @@ At the end of this
 
     git clone git@github.com:zmon/my-map-doc.git
 
-You should endup with a directory called _my-map-doc_
+You should endup with a directory called *my-map*
 
 
 
