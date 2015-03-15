@@ -1,5 +1,5 @@
-
 /* From http://www.nczonline.net/blog/2010/05/25/cross-domain-ajax-with-cross-origin-resource-sharing/ */
+
 function createCORSRequest(method, url) {
     var xhr = new XMLHttpRequest();
     if ("withCredentials" in xhr) {
@@ -30,13 +30,28 @@ var yesterday = output + 'T00:00:00';
 
 // See http://dev.socrata.com/docs/queries.html on SoQL Clauses
 
-var request = createCORSRequest("get", "http://data.kcmo.org/resource/7at3-sxhp.json?$where=creation_date='" + yesterday + "'");
-if (request) {
-    request.onload = function () {
-        var data = JSON.parse(request.responseText);
-	console.dir( data );       
+var request_311 = createCORSRequest("get", "http://data.kcmo.org/resource/7at3-sxhp.json?$where=creation_date='" + yesterday + "'");
+if (request_311) {
+    request_311.onload = function () {
+        var data = JSON.parse(request_311.responseText);
+        console.dir(data);
+        for (var i in data) {
+            var row = '';
+            row += '<tr>';
+            row += '<td>' + data[i]['case_id'] + '</td>';
+            row += '<td>' + data[i]['street_address'] + '</td>';
+            row += '<td>' + data[i]['department'] + '</td>';
+            row += '<td>' + data[i]['request_type'] + '</td>';
+            row += '<td>' + data[i]['status'] + '</td>';
+            row += '</tr>';
+
+            $('#cases > tbody:last').append(row);
+
+            if (i > 10) break;
+            
+        }
     };
-    request.send();
+    request_311.send();
 } 
 
 

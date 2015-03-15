@@ -155,3 +155,81 @@ This is taken from http://getbootstrap.com/examples/navbar-static-top
 
 Now you should be able to view the `index.html` by opening it with your browser. 
 It should be something like file:///..../my-map/index.html
+
+Lets get some data
+------------------
+We are going to change the `index.html` so the jumbotron tells the user what they need to do and 
+it includes the file with our "app" `js/app.js`.
+
+Change to bottom of the `index.html` to the following:
+
+```
+    <div class="container">
+
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <h1>311 Data Example - Use Your Debuger Console to see the data</h1>
+        <p>Open up your debuger and it's console.  Then refreash this page.
+        </p>
+      </div>
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="js/app.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
+  </body>
+</html>
+```
+
+Place the following in `js/app.js`
+
+```
+/* From http://www.nczonline.net/blog/2010/05/25/cross-domain-ajax-with-cross-origin-resource-sharing/ */
+function createCORSRequest(method, url) {
+    var xhr = new XMLHttpRequest();
+    if ("withCredentials" in xhr) {
+        xhr.open(method, url, true);
+    } else if (typeof XDomainRequest != "undefined") {
+        xhr = new XDomainRequest();
+        xhr.open(method, url);
+    } else {
+        xhr = null;
+    }
+    return xhr;
+}
+
+
+var d = new Date();
+var month = d.getMonth() + 1;
+
+if (d.getHours() < 7) {
+    var day = d.getDate() - 2;
+} else {
+    var day = d.getDate() - 1;
+}
+
+var output = d.getFullYear() + '-' +
+    (('' + month).length < 2 ? '0' : '') + month + '-' +
+    (('' + day).length < 2 ? '0' : '') + day;
+var yesterday = output + 'T00:00:00';
+
+// See http://dev.socrata.com/docs/queries.html on SoQL Clauses
+
+var request = createCORSRequest("get", "http://data.kcmo.org/resource/7at3-sxhp.json?$where=creation_date='" + yesterday + "'");
+if (request) {
+    request.onload = function () {
+        var data = JSON.parse(request.responseText);
+        console.dir( data );
+    };
+    request.send();
+}
+```
+
+
