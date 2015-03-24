@@ -58,6 +58,12 @@ if (request_311) {
 // Get Google Spreadsheet data
 
 // https://docs.google.com/spreadsheets/d/1IFbDEk5cRKP3WuQX7gMl6XDxLYuVZ4eeq0XRluxqmEQ/edit#gid=669009687
+//                                        \________________________  _______________/
+//                                                                 \/
+//                                                                key passed to tabletop
+//                                                                to identify the spread sheet
+//  NOTE:  You have to publish the spread sheet from 
+//         the File menu of the spread sheet.
 
 // Please note that the column names in this spread sheet were defined by the Google Form that inserts data into it.
 
