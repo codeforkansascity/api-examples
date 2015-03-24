@@ -4,10 +4,10 @@ A simple app to show the technology that can be used to access data from a stati
 
 It is best if you:
 
-# Clone this project to your local drive
-# Open index.html in your browser
-# Open your browser's console
-# Refreash - and see what data the API's are returning to the browser
+* Clone this project to your local drive
+* Open index.html in your browser
+* Open your browser's console
+* Refreash - and see what data the API's are returning to the browser
 
 Technology Stack
 ----------------
