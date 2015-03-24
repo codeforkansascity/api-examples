@@ -16,11 +16,11 @@ function createCORSRequest(method, url) {
 
 var d = new Date();
 var month = d.getMonth() + 1;
-
+var day = 0;
 if (d.getHours() < 7) {
-    var day = d.getDate() - 2;
+    day = d.getDate() - 2;
 } else {
-    var day = d.getDate() - 1;
+    day = d.getDate() - 1;
 }
 
 var output = d.getFullYear() + '-' +
@@ -48,13 +48,42 @@ if (request_311) {
             $('#cases > tbody:last').append(row);
 
             if (i > 10) break;
-            
+
         }
     };
     request_311.send();
-} 
+}
 
 
 // Get Google Spreadsheet data
 
 // https://docs.google.com/spreadsheets/d/1IFbDEk5cRKP3WuQX7gMl6XDxLYuVZ4eeq0XRluxqmEQ/edit#gid=669009687
+
+// Please note that the column names in this spread sheet were defined by the Google Form that inserts data into it.
+
+
+Tabletop.init({                                             // Requires js/tabletop.js
+    key: '1IFbDEk5cRKP3WuQX7gMl6XDxLYuVZ4eeq0XRluxqmEQ',
+    callback: function (data, tabletop) {
+        console.dir(data);
+        for (var i in data) {
+            var row = '';
+            row += '<tr>';
+            row += '<td>' + data[i]['1. Project Title/Name'] + '</td>';
+            row += '<td>' + data[i]['3. Project type'] + '</td>';
+            row += '<td>' + data[i]['2. Project description'] + '</td>';
+            row += '<td>' + data[i]['17. Organization name'] + '</td>';
+            row += '<td>' + data[i]['10. For area-wide projects, list the neighborhood(s) in which this project occurs.'] + '</td>';
+            row += '</tr>';
+
+            $('#projects > tbody:last').append(row);
+
+            if (i > 10) break;
+
+        }
+    },
+    orderby: '3. Project type',
+    simpleSheet: true
+});
+
+
