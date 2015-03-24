@@ -1,6 +1,6 @@
-# my-map-doc
+# api-examples
 
-A simple app to show the technology that can be used to create a map app from a static web page.
+A simple app to show the technology that can be used to access data from a static web page.
 
 Technology Stack
 ----------------
@@ -10,19 +10,10 @@ Technology Stack
 * CSS
 * BootStrap - http://getbootstrap.com/
 * jQuery
-* Google Maps V3
+* [CORS](http://www.nczonline.net/blog/2010/05/25/cross-domain-ajax-with-cross-origin-resource-sharing/)
 
 ### Helpers
-* tkmap 4.0.0
-* infobox
 * tabletop
-
-### Project Specific
-* projects
-* event
-
-### Site Specific
-* local.js
 
 ### Other
 * JSON
